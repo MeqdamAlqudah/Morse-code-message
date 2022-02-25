@@ -1,6 +1,18 @@
 def decode(message)
   morse = { '.-' => 'a', '-...' => 'b', '-.-.' => 'c', '-..' => 'd', '.' => 'e', '..-.' => 'f', '--.' => 'g', '....' => 'h', '..' => 'i',
             '.---' => 'j', '-.-' => 'k', '.-..' => 'l', '--' => 'm', '-.' => 'n', '---' => 'o', '.--.' => 'p', '--.-' => 'q', '.-.' => 'r', '...' => 's', '-' => 't', '..-' => 'u', '...-' => 'v', '.--' => 'w', '-..-' => 'x', '-.--' => 'y', '--..' => 'z' }
+result = []
+arr = message.split("   ")
+arr.each do |single|
+  sub_arr = single.split(" ")
+  sub_result = []
+  sub_arr.each do |i|
+    sub_result.push(morse[i].upcase)
+  end
+  result.push(sub_result.join)
+  
+end
+return result.join(" ")
 
 end
-# puts decode '.-   -... --- -..-   ..-. ..- .-.. .-..   --- ..-.   .-. ..- -... .. . ...'
+puts decode '.-   -... --- -..-   ..-. ..- .-.. .-..   --- ..-.   .-. ..- -... .. . ...'
