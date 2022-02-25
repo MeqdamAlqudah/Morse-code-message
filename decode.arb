@@ -1,0 +1,48 @@
+morse = { '.-' => 'a',
+          '-...' => 'b',
+          '-.-.' => 'c',
+          '-..' => 'd',
+          '.' => 'e',
+          '..-.' => 'f',
+          '--.' => 'g',
+          '....' => 'h',
+          '..' => 'i',
+          '.---' => 'j',
+          '-.-' => 'k',
+          '.-..' => 'l',
+          '--' => 'm',
+          '-.' => 'n',
+          '---' => 'o',
+          '.--.' => 'p',
+          '--.-' => 'q',
+          '.-.' => 'r',
+          '...' => 's',
+          '-' => 't',
+          '..-' => 'u',
+          '...-' => 'v',
+          '.--' => 'w',
+          '-..-' => 'x',
+          '-.--' => 'y',
+          '--..' => 'z' }
+def decode_char(char, morse)
+  morse[char].upcase
+end
+
+def decode_word(word, morse)
+  sub_arr = word.split
+  sub_result = []
+  sub_arr.each do |i|
+    sub_result.push(decode_char(i, morse))
+  end
+  sub_result.join
+end
+
+def decode(message, morse)
+  result = []
+  arr = message.split('   ')
+  arr.each do |single|
+    result.push(decode_word(single, morse))
+  end
+  result.join(' ')
+end
+puts decode '.-   -... --- -..-   ..-. ..- .-.. .-..   --- ..-.   .-. ..- -... .. . ...', morse
