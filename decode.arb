@@ -24,17 +24,24 @@ morse = { '.-' => 'a',
           '-..-' => 'x',
           '-.--' => 'y',
           '--..' => 'z' }
+def decode_char(char, morse)
+  morse[char].upcase
+end
+
+def decode_word(word, morse)
+  sub_arr = word.split
+  sub_result = []
+  sub_arr.each do |i|
+    sub_result.push(decode_char(i, morse))
+  end
+  sub_result.join
+end
 
 def decode(message, morse)
   result = []
   arr = message.split('   ')
   arr.each do |single|
-    sub_arr = single.split
-    sub_result = []
-    sub_arr.each do |i|
-      sub_result.push(morse[i].upcase)
-    end
-    result.push(sub_result.join)
+    result.push(decode_word(single, morse))
   end
   result.join(' ')
 end
